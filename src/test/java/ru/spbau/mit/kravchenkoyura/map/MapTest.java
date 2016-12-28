@@ -5,8 +5,7 @@ import ru.spbau.mit.kravchenkoyura.characters.Rock;
 
 
 import static org.junit.Assert.assertFalse;
-import static org.testng.AssertJUnit.assertEquals;
-import static org.testng.AssertJUnit.assertTrue;
+import static org.junit.Assert.*;
 
 
 /**
