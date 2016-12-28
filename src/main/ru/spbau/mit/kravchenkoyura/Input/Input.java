@@ -1,4 +1,6 @@
-package main.ru.spbau.mit.kravchenkoyura;
+package main.ru.spbau.mit.kravchenkoyura.Input;
+
+import main.ru.spbau.mit.kravchenkoyura.Map;
 
 import java.io.DataInputStream;
 import java.io.IOException;
@@ -22,24 +24,48 @@ public class Input {
                 } catch (IOException e) {
                     s = "q";
                 }
+                if (s.length() == 0) {
+                    continue;
+                }
+                int val;
                 switch (s.charAt(0)) {
                     case('w'):
                         listener.move(Map.Move.UP);
+                        break;
                     case('a'):
                         listener.move(Map.Move.LEFT);
+                        break;
                     case('s'):
                         listener.move(Map.Move.DOWN);
+                        break;
                     case('d'):
                         listener.move(Map.Move.RIGHT);
+                        break;
                     case('i'):
                         listener.itemList();
+                        break;
                     case('e'):
-                        listener.equip(Integer.parseInt(s.substring(2)));
+                        try {
+                            val = Integer.parseInt(s.substring(2));
+                        }
+                        catch (Exception e) {
+                            break;
+                        }
+                        listener.equip(val);
+                        break;
                     case('u'):
-                        listener.unequip(Integer.parseInt(s.substring(2)));
+                        try {
+                            val = Integer.parseInt(s.substring(2));
+                        }
+                        catch (Exception e) {
+                            break;
+                        }
+                        listener.unequip(val);
+                        break;
                     case('q'):
                         listener.quit();
                         notEnded = false;
+                        break;
                 }
             }
         }).start();

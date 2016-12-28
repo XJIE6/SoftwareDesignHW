@@ -1,6 +1,7 @@
-package main.ru.spbau.mit.kravchenkoyura;
+package main.ru.spbau.mit.kravchenkoyura.map;
 
-import java.util.Arrays;
+import main.ru.spbau.mit.kravchenkoyura.EmptyField;
+import main.ru.spbau.mit.kravchenkoyura.Rock;
 
 /**
  * Created by YuryKravchenko on 27/12/2016.
@@ -23,13 +24,13 @@ public class Map {
         public Position add(Move move) {
             switch(move) {
                 case UP:
-                    return new Position(x, y + 1);
-                case DOWN:
-                    return new Position(x, y - 1);
-                case LEFT:
                     return new Position(x - 1, y);
-                case RIGHT:
+                case DOWN:
                     return new Position(x + 1, y);
+                case LEFT:
+                    return new Position(x, y - 1);
+                case RIGHT:
+                    return new Position(x, y + 1);
             }
             return null;
         }
@@ -38,8 +39,8 @@ public class Map {
             Map.this.map[x][y] = elem;
         }
     }
-    private static final EmptyField EMPTY_FIELD = new EmptyField();
-    private static final Rock ROCK = new Rock();
+    public static final EmptyField EMPTY_FIELD = new EmptyField();
+    public static final Rock ROCK = new Rock();
     private MapEntry[][] map;
     Map(int n) {
         map = generate(n);
@@ -47,9 +48,17 @@ public class Map {
 
     private MapEntry[][] generate(int n) {
         MapEntry[][] res = new MapEntry[n][n];
-        MapEntry[] fill = new MapEntry[n];
-        Arrays.fill(fill, new EmptyField());
-        Arrays.fill(res, fill);
+        for (int i = 0; i < n; ++i) {
+            res[0][i] = res[i][0] = res[n - 1][i] = res[i][n - 1] = ROCK;
+        }
+        for (int i = 1; i < n - 1; ++i) {
+            for (int j = 1; j < n - 1; ++j) {
+                res[i][j] = EMPTY_FIELD;
+            }
+        }
+//        MapEntry[] fill = new MapEntry[n];
+//        Arrays.fill(fill, new EmptyField());
+//        Arrays.fill(res, fill.clone());
         return res;
     }
 
@@ -64,10 +73,10 @@ public class Map {
         if (field instanceof EmptyField) {
             newPos.put(character);
             pos.put(field);
-            return null;
+            return field;
         }
         if (field instanceof Rock) {
-            return null;
+            return field;
         }
         return field;
     }
@@ -81,5 +90,17 @@ public class Map {
             }
         }
         return null;
+    }
+
+    boolean isEmpty(int x, int y) {
+        return new Position(x, y).get() == EMPTY_FIELD;
+    }
+
+    void set(int x, int y, MapEntry character) {
+        new Position(x, y).put(character);
+    }
+
+    public MapEntry[][] getMap() {
+        return map;
     }
 }
