@@ -1,13 +1,17 @@
-package main.ru.spbau.mit.kravchenkoyura.map;
+package ru.spbau.mit.kravchenkoyura.map;
 
-import main.ru.spbau.mit.kravchenkoyura.EmptyField;
-import main.ru.spbau.mit.kravchenkoyura.Rock;
+import main.ru.spbau.mit.kravchenkoyura.characters.EmptyField;
+import main.ru.spbau.mit.kravchenkoyura.characters.Rock;
 
 /**
  * Created by YuryKravchenko on 27/12/2016.
  */
 public class Map {
     public static enum Move {UP, DOWN, LEFT, RIGHT}
+    public static final EmptyField EMPTY_FIELD = new EmptyField();
+    public static final Rock ROCK = new Rock();
+    private MapEntry[][] map;
+    //вспомогательный класс для более удобного доступа к двухмерному массиву map
     private class Position {
         public int x;
         public int y;
@@ -39,14 +43,11 @@ public class Map {
             Map.this.map[x][y] = elem;
         }
     }
-    public static final EmptyField EMPTY_FIELD = new EmptyField();
-    public static final Rock ROCK = new Rock();
-    private MapEntry[][] map;
-    Map(int n) {
-        map = generate(n);
+    public Map(int n) {
+        map = fill(n);
     }
-
-    private MapEntry[][] generate(int n) {
+    //заполняет поле пустыми клетками и камнями по краям
+    private MapEntry[][] fill(int n) {
         MapEntry[][] res = new MapEntry[n][n];
         for (int i = 0; i < n; ++i) {
             res[0][i] = res[i][0] = res[n - 1][i] = res[i][n - 1] = ROCK;
@@ -56,9 +57,6 @@ public class Map {
                 res[i][j] = EMPTY_FIELD;
             }
         }
-//        MapEntry[] fill = new MapEntry[n];
-//        Arrays.fill(fill, new EmptyField());
-//        Arrays.fill(res, fill.clone());
         return res;
     }
 
@@ -66,6 +64,7 @@ public class Map {
         find(character).put(EMPTY_FIELD);
     }
 
+    //возвращает, что находится в клетке, куда хотим передвинуть и двигает, если можно
     public MapEntry move(MapEntry character, Move move) {
         Position pos = find(character);
         Position newPos = pos.add(move);
@@ -92,11 +91,11 @@ public class Map {
         return null;
     }
 
-    boolean isEmpty(int x, int y) {
+    public boolean isEmpty(int x, int y) {
         return new Position(x, y).get() == EMPTY_FIELD;
     }
 
-    void set(int x, int y, MapEntry character) {
+    public void set(int x, int y, MapEntry character) {
         new Position(x, y).put(character);
     }
 

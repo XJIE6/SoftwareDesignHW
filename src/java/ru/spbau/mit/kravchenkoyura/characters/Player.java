@@ -1,7 +1,6 @@
-package main.ru.spbau.mit.kravchenkoyura.characters;
+package ru.spbau.mit.kravchenkoyura.characters;
 
-import main.ru.spbau.mit.kravchenkoyura.Game;
-import main.ru.spbau.mit.kravchenkoyura.map.MapEntry;
+import ru.spbau.mit.kravchenkoyura.map.MapEntry;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -9,17 +8,21 @@ import java.util.List;
 /**
  * Created by YuryKravchenko on 27/12/2016.
  */
-public class Player extends Game.HasParams implements MapEntry {
-    private static final int MAX_EQUIPED = 2;
+public class Player extends HasParams implements MapEntry {
+    private static final int MAX_EQUIPPED = 2;
     private List<Item> equipped = new ArrayList<Item>();
     private List<Item> inventory = new ArrayList<Item>();
 
-    void add(Item item) {
+    public Player(int attack, int hp) {
+        super(attack, hp);
+    }
+
+    public void add(Item item) {
         inventory.add(item);
     }
 
-    void equip(int number) {
-        if (equipped.size() < MAX_EQUIPED) {
+    public void equip(int number) {
+        if (equipped.size() < MAX_EQUIPPED) {
             if (number >= 0 && number < inventory.size()) {
                 equipped.add(inventory.get(number));
                 inventory.remove(number);
@@ -27,7 +30,7 @@ public class Player extends Game.HasParams implements MapEntry {
         }
     }
 
-    void unequip(int number) {
+    public void unequip(int number) {
         if (number >= 0 && number < equipped.size()) {
             inventory.add(equipped.get(number));
             equipped.remove(number);
@@ -41,12 +44,12 @@ public class Player extends Game.HasParams implements MapEntry {
 
     @Override
     public int getAttack() {
-        return super.getAttack() + equipped.stream().mapToInt(Game.HasParams::getAttack).sum();
+        return super.getAttack() + equipped.stream().mapToInt(HasParams::getAttack).sum();
     }
 
     @Override
     public int getHp() {
-        return super.getHp() + equipped.stream().mapToInt(Game.HasParams::getHp).sum();
+        return super.getHp() + equipped.stream().mapToInt(HasParams::getHp).sum();
     }
 
     public List<Item> getEquipped() {

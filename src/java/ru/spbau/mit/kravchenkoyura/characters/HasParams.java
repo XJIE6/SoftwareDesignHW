@@ -1,4 +1,4 @@
-package main.ru.spbau.mit.kravchenkoyura.characters;
+package ru.spbau.mit.kravchenkoyura.characters;
 
 /**
  * Created by YuryKravchenko on 28/12/2016.
@@ -6,6 +6,11 @@ package main.ru.spbau.mit.kravchenkoyura.characters;
 public abstract class HasParams {
     private int attack;
     private int hp;
+
+    public HasParams(int attack, int hp) {
+        this.attack = attack;
+        this.hp = hp;
+    }
 
     public int getHp() {
         return hp;
@@ -15,7 +20,7 @@ public abstract class HasParams {
         return attack;
     }
 
-    public void getDMG(int n) {
+    public void dealDMG(int n) {
         hp = hp - n;
     }
 
