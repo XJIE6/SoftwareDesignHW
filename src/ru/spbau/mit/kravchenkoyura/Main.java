@@ -1,7 +1,7 @@
-package main.ru.spbau.mit.kravchenkoyura;
+package ru.spbau.mit.kravchenkoyura;
 
-import main.ru.spbau.mit.kravchenkoyura.Control.Messenger;
-import main.ru.spbau.mit.kravchenkoyura.GUI.View;
+import ru.spbau.mit.kravchenkoyura.Control.Messenger;
+import ru.spbau.mit.kravchenkoyura.GUI.View;
 
 import javax.swing.*;
 

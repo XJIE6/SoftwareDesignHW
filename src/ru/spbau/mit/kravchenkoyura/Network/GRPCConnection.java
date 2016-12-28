@@ -1,15 +1,14 @@
-package main.ru.spbau.mit.kravchenkoyura.Network;
+package ru.spbau.mit.kravchenkoyura.Network;
 
 import java.io.IOException;
 
 import io.grpc.*;
 import io.grpc.stub.StreamObserver;
-import main.ru.spbau.mit.kravchenkoyura.Control.Message;
-import main.ru.spbau.mit.kravchenkoyura.Control.Messenger;
-import main.ru.spbau.mit.kravchenkoyura.Control.NetworkListener;
+import ru.spbau.mit.kravchenkoyura.Control.Message;
+import ru.spbau.mit.kravchenkoyura.Control.Messenger;
+import ru.spbau.mit.kravchenkoyura.Control.NetworkListener;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import ru.spbau.mit.kravchenkoyura.proto.*;
 
 /**
  * Created by YuryKravchenko on 21/12/2016.

@@ -1,4 +1,4 @@
-package main.ru.spbau.mit.kravchenkoyura.Control;
+package ru.spbau.mit.kravchenkoyura.Control;
 
 /**
  * Created by YuryKravchenko on 21/12/2016.

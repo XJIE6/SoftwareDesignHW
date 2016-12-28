@@ -1,8 +1,8 @@
-package main.ru.spbau.mit.kravchenkoyura.GUI;
+package ru.spbau.mit.kravchenkoyura.GUI;
 
-import main.ru.spbau.mit.kravchenkoyura.Control.GUIListener;
-import main.ru.spbau.mit.kravchenkoyura.Control.Message;
-import main.ru.spbau.mit.kravchenkoyura.Control.Messenger;
+import ru.spbau.mit.kravchenkoyura.Control.GUIListener;
+import ru.spbau.mit.kravchenkoyura.Control.Message;
+import ru.spbau.mit.kravchenkoyura.Control.Messenger;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 

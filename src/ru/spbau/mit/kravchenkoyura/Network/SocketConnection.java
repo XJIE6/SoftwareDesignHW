@@ -1,8 +1,8 @@
-package main.ru.spbau.mit.kravchenkoyura.Network;
+package ru.spbau.mit.kravchenkoyura.Network;
 
-import main.ru.spbau.mit.kravchenkoyura.Control.Message;
-import main.ru.spbau.mit.kravchenkoyura.Control.Messenger;
-import main.ru.spbau.mit.kravchenkoyura.Control.NetworkListener;
+import ru.spbau.mit.kravchenkoyura.Control.Message;
+import ru.spbau.mit.kravchenkoyura.Control.Messenger;
+import ru.spbau.mit.kravchenkoyura.Control.NetworkListener;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 

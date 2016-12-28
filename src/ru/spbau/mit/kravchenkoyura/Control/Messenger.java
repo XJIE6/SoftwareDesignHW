@@ -1,9 +1,9 @@
-package main.ru.spbau.mit.kravchenkoyura.Control;
+package ru.spbau.mit.kravchenkoyura.Control;
 
-import main.ru.spbau.mit.kravchenkoyura.GUI.UI;
-import main.ru.spbau.mit.kravchenkoyura.Network.GRPCConnection;
-import main.ru.spbau.mit.kravchenkoyura.Network.Network;
-import main.ru.spbau.mit.kravchenkoyura.Network.SocketConnection;
+import ru.spbau.mit.kravchenkoyura.GUI.UI;
+import ru.spbau.mit.kravchenkoyura.Network.GRPCConnection;
+import ru.spbau.mit.kravchenkoyura.Network.Network;
+import ru.spbau.mit.kravchenkoyura.Network.SocketConnection;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
