@@ -1,7 +1,7 @@
 package ru.spbau.mit.kravchenkoyura.map;
 
-import main.ru.spbau.mit.kravchenkoyura.characters.EmptyField;
-import main.ru.spbau.mit.kravchenkoyura.characters.Rock;
+import ru.spbau.mit.kravchenkoyura.characters.EmptyField;
+import ru.spbau.mit.kravchenkoyura.characters.Rock;
 
 /**
  * Created by YuryKravchenko on 27/12/2016.

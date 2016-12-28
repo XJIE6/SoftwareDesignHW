@@ -2,7 +2,7 @@ package ru.spbau.mit.kravchenkoyura;
 
 import ru.spbau.mit.kravchenkoyura.input.Input;
 import ru.spbau.mit.kravchenkoyura.input.InputListener;
-import main.ru.spbau.mit.kravchenkoyura.characters.*;
+import ru.spbau.mit.kravchenkoyura.characters.*;
 import ru.spbau.mit.kravchenkoyura.map.Map;
 import ru.spbau.mit.kravchenkoyura.map.MapEntry;
 import ru.spbau.mit.kravchenkoyura.printer.Printer;

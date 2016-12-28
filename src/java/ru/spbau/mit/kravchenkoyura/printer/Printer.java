@@ -1,7 +1,7 @@
 package ru.spbau.mit.kravchenkoyura.printer;
 
-import main.ru.spbau.mit.kravchenkoyura.characters.Item;
-import main.ru.spbau.mit.kravchenkoyura.characters.Player;
+import ru.spbau.mit.kravchenkoyura.characters.Item;
+import ru.spbau.mit.kravchenkoyura.characters.Player;
 import ru.spbau.mit.kravchenkoyura.map.MapEntry;
 
 import java.util.List;
