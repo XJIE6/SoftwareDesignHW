@@ -1,4 +1,4 @@
-package ru.spbau.mit.kravchenkoyura;
+package main.ru.spbau.mit.kravchenkoyura;
 
 import java.util.Arrays;
 

@@ -1,4 +1,4 @@
-package ru.spbau.mit.kravchenkoyura;
+package main.ru.spbau.mit.kravchenkoyura;
 
 /**
  * Created by YuryKravchenko on 21/12/2016.
