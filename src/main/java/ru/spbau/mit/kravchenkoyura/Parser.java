@@ -1,5 +1,6 @@
 package ru.spbau.mit.kravchenkoyura;
 
+import com.beust.jcommander.JCommander;
 import ru.spbau.mit.kravchenkoyura.cmd.*;
 
 import java.io.IOException;
@@ -57,6 +58,20 @@ public class Parser {
                 return new Pwd(args);
             case "wc":
                 return new Wc(args);
+            case "grep":
+                List<String> params = new ArrayList<>();
+                List<String> keys = new ArrayList<>();
+                for (String arg: args) {
+                    if (arg.charAt(0) == '-') {
+                        keys.add(arg);
+                    }
+                    else {
+                        params.add(arg);
+                    }
+                }
+                Grep grep = new Grep(params);
+                new JCommander(grep, keys.toArray(new String[0]));
+                return grep;
             default:
                 return new Exec(args, cmdName);
         }
