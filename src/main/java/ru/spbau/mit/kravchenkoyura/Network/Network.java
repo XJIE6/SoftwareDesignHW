@@ -4,12 +4,31 @@ import ru.spbau.mit.kravchenkoyura.Control.Message;
 import ru.spbau.mit.kravchenkoyura.Control.NetworkListener;
 
 /**
- * Created by YuryKravchenko on 07/12/2016.
+ * Интерфейс, котый должны выполнять соединения для их обработки
  */
 public interface Network {
+    /**
+     * Запуск
+     */
     public void start(NetworkListener listener);
+
+    /**
+     * Отключиться
+     */
     public void disconnect();
+
+    /**
+     * Подключиться по заданному ip и порту
+     */
     public void connect(String ip, String port);
+
+    /**
+     * Ожиать подключения по заданному порту
+     */
     public void wait(String port);
+
+    /**
+     * Отправить сообщение
+     */
     public void send(Message message);
 }

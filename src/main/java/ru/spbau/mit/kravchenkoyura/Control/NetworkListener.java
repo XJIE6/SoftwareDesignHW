@@ -1,10 +1,21 @@
 package ru.spbau.mit.kravchenkoyura.Control;
 
 /**
- * Created by YuryKravchenko on 21/12/2016.
+ * Интерфейс, который предоставляется сети для информирования месенджера
  */
 public interface NetworkListener {
+    /**
+     * Вызывается, когда пришло сообщение
+     */
     public void onReceive(Message message);
+
+    /**
+     * Вызывается, когда сеть отключилась
+     */
     public void onDisconnect();
+
+    /**
+     * Вызывается, когда произошла ошибка
+     */
     public void onError(String error);
 }
