@@ -6,7 +6,7 @@ import ru.spbau.mit.kravchenkoyura.map.MapEntry;
 
 import java.util.List;
 /**
- * Created by YuryKravchenko on 27/12/2016.
+ * Выводит карту и остальную информацию на консоль
  */
 public class Printer {
     private static final int VISION = 2;
@@ -36,6 +36,10 @@ public class Printer {
     public void print(int hp, int attack) {
         System.out.printf("HP: %d    DMG: %d\n", hp, attack);
     }
+
+    /**
+     * Вывести список одетых вещей
+     */
     public void print(List<Item> equipped, List<Item> inventory) {
         System.out.println("Equipped\n     №    HP   DMG");
         for (int i = 0; i < equipped.size(); ++i) {

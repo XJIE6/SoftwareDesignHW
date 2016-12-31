@@ -6,10 +6,13 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Created by YuryKravchenko on 27/12/2016.
+ * Игрок
  */
 public class Player extends HasParams implements MapEntry {
     private static final int MAX_EQUIPPED = 2;
+    /**
+     * Список надетых вещей и вещей в инвентаре
+     */
     private List<Item> equipped = new ArrayList<Item>();
     private List<Item> inventory = new ArrayList<Item>();
 
@@ -17,10 +20,17 @@ public class Player extends HasParams implements MapEntry {
         super(attack, hp);
     }
 
+    /**
+     * Подобрать вещь
+     */
     public void add(Item item) {
         inventory.add(item);
     }
 
+    /**
+     * Одеть вещь
+     * @param number - номер вещи
+     */
     public void equip(int number) {
         if (equipped.size() < MAX_EQUIPPED) {
             if (number >= 0 && number < inventory.size()) {
@@ -30,6 +40,10 @@ public class Player extends HasParams implements MapEntry {
         }
     }
 
+    /**
+     * Снять вещь
+     * @param number номер вещи
+     */
     public void unequip(int number) {
         if (number >= 0 && number < equipped.size()) {
             inventory.add(equipped.get(number));

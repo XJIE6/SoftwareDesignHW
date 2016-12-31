@@ -6,7 +6,7 @@ import java.io.DataInputStream;
 import java.io.IOException;
 
 /**
- * Created by YuryKravchenko on 27/12/2016.
+ * Этот класс работает со вводом пользователя
  */
 public class Input {
     InputListener listener;
@@ -14,7 +14,9 @@ public class Input {
         this.listener = listener;
     }
     public void start() {
-        //поток обрабатывает команды с клавиатцры и передаёт их игре
+        /**
+         * поток обрабатывает команды с клавиатуры и передаёт их игре
+         */
         new Thread(() -> {
             DataInputStream input = new DataInputStream(System.in);
             boolean notEnded = true;

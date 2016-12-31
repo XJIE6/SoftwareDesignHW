@@ -3,7 +3,7 @@ package ru.spbau.mit.kravchenkoyura.characters;
 import ru.spbau.mit.kravchenkoyura.map.MapEntry;
 
 /**
- * Created by YuryKravchenko on 27/12/2016.
+ * Объект на карте,через который нельзя пройти
  */
 public class Rock implements MapEntry {
     @Override

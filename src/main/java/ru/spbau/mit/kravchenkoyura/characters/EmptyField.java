@@ -3,7 +3,7 @@ package ru.spbau.mit.kravchenkoyura.characters;
 import ru.spbau.mit.kravchenkoyura.map.MapEntry;
 
 /**
- * Created by YuryKravchenko on 27/12/2016.
+ * Пустое поле на карте
  */
 public class EmptyField implements MapEntry {
 

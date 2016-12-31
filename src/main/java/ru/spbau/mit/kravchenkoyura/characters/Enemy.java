@@ -6,13 +6,16 @@ import ru.spbau.mit.kravchenkoyura.map.MapEntry;
 import java.util.Random;
 
 /**
- * Created by YuryKravchenko on 27/12/2016.
+ * Враг. Игрок должен сражаться с ними
  */
 public class Enemy extends HasParams implements MapEntry {
     public Enemy(int attack, int hp) {
         super(attack, hp);
     }
-    //случайное движение
+
+    /**
+     * Метод возвращает направление, куда хочет передвинуться враг
+     */
     public Map.Move move() {
         return Map.Move.values()[new Random().nextInt(Map.Move.values().length)];
     }

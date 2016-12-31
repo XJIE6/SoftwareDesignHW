@@ -11,7 +11,7 @@ import java.util.ArrayList;
 import java.util.Random;
 
 /**
- * Created by YuryKravchenko on 21/12/2016.
+ * Главный класс
  */
 public class Game implements InputListener {
     private Map map;
@@ -21,7 +21,8 @@ public class Game implements InputListener {
     private ArrayList<Enemy> toRemove;
     private static final int GAME_SIZE = 15;
     private boolean ENDED = false;
-    //двигает игрока, вызывается инпутом
+
+
     @Override
     public void move(Map.Move move) {
         if (ENDED) {
@@ -53,7 +54,10 @@ public class Game implements InputListener {
         printer.print(player.getHp(), player.getAttack());
     }
 
-    //обрабатывает обмен ударами игрока и моба
+    /**
+     * Обрабатывает обмен ударами игрока и врага
+     */
+
     private void fight(Enemy enemy) {
         player.dealDMG(enemy.getAttack());
         enemy.dealDMG(player.getAttack());
@@ -66,7 +70,10 @@ public class Game implements InputListener {
             ENDED = true;
         }
     }
-    //двигает врагов
+
+    /**
+     * Двигает врагов
+     */
     private void turn() {
         for (Enemy enemy: enemies) {
             MapEntry result = map.move(enemy, enemy.move());

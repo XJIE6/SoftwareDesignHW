@@ -1,7 +1,7 @@
 package ru.spbau.mit.kravchenkoyura.characters;
 
 /**
- * Created by YuryKravchenko on 28/12/2016.
+ * Общий класс для того, у чего есть параметры (атака и хп)
  */
 public abstract class HasParams {
     private int attack;

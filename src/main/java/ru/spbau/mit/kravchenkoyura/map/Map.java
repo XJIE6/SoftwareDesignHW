@@ -4,14 +4,16 @@ import ru.spbau.mit.kravchenkoyura.characters.EmptyField;
 import ru.spbau.mit.kravchenkoyura.characters.Rock;
 
 /**
- * Created by YuryKravchenko on 27/12/2016.
+ * Класс карта хранит всех персоонажей
  */
 public class Map {
     public static enum Move {UP, DOWN, LEFT, RIGHT}
     public static final EmptyField EMPTY_FIELD = new EmptyField();
     public static final Rock ROCK = new Rock();
     private MapEntry[][] map;
-    //вспомогательный класс для более удобного доступа к двухмерному массиву map
+    /**
+     * вспомогательный класс для более удобного доступа к двухмерному массиву map
+     */
     private class Position {
         public int x;
         public int y;
@@ -46,7 +48,10 @@ public class Map {
     public Map(int n) {
         map = fill(n);
     }
-    //заполняет поле пустыми клетками и камнями по краям
+
+    /**
+     * заполняет поле пустыми клетками и камнями по краям
+     */
     private MapEntry[][] fill(int n) {
         MapEntry[][] res = new MapEntry[n][n];
         for (int i = 0; i < n; ++i) {
@@ -64,7 +69,9 @@ public class Map {
         find(character).put(EMPTY_FIELD);
     }
 
-    //возвращает, что находится в клетке, куда хотим передвинуть и двигает, если можно
+    /**
+     * возвращает, что находится в клетке, куда хотим передвинуть и двигает, если можно
+     */
     public MapEntry move(MapEntry character, Move move) {
         Position pos = find(character);
         Position newPos = pos.add(move);
