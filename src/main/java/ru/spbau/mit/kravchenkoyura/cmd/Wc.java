@@ -4,13 +4,17 @@ import java.io.*;
 import java.util.List;
 import java.util.Map;
 import java.util.Scanner;
-/*считает количество строк, слов и байт*/
+/**
+ * считает количество строк, слов и байт
+ */
 public class Wc extends Cmd{
 
     public Wc(List<String> params) {
         super(params);
     }
-    /*если есть параметр, то считываем из файла*/
+    /**
+     * если есть параметр, то считываем из файла
+     */
     @Override
     void eval(InputStream in, OutputStream out, Map<String, String> env) throws IOException {
         if (params.size() > 0) {

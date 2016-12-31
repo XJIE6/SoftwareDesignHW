@@ -4,6 +4,9 @@ import java.io.*;
 import java.util.List;
 import java.util.Map;
 
+/**
+ * команда предназначена для передачи результатов одной команды на вход другой
+ */
 public class Pipeline extends Cmd {
     private List<Cmd> cmd;
 
@@ -12,6 +15,9 @@ public class Pipeline extends Cmd {
         this.cmd = cmd;
     }
 
+    /**
+     * команды соединяются одна за другой с помощью PipedInputStream и PipedOutputStream
+     */
     @Override
     public void eval(InputStream in, OutputStream out, Map<String, String> env) throws IOException {
         if (cmd.size() == 0) {

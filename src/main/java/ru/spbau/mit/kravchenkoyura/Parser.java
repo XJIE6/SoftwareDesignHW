@@ -8,7 +8,9 @@ import java.util.*;
 
 public class Parser {
     private static int index;
-    /*метод выбирает параметры команды до первого пайплайна*/
+    /**
+     * метод выбирает параметры команды до первого пайплайна
+     */
     private static List<String> parseArgs(List<String> tokens) throws IOException {
         List<String> args = new ArrayList<>();
         List<String> argsInQuote = new ArrayList<>();
@@ -36,8 +38,10 @@ public class Parser {
         }
         return args;
     }
-    /*метод выбирает первую строку как команду, запускает получение её параметров и возвращает результирующую команду
-    * с набором параметров*/
+    /**
+     * метод выбирает первую строку как команду, запускает получение её параметров и
+     * возвращает результирующую команду с набором параметров
+     * */
     private static Cmd parseCmd(List<String> tokens) throws IOException {
         String cmdName = tokens.get(index);
         index++;
@@ -63,7 +67,9 @@ public class Parser {
         }
     }
 
-    /*возврящает список команд, отделённых пайплайном*/
+    /**
+     * @return - список команд, отделённых пайплайном
+     */
     public static List<Cmd> parseCommands(List<String> tokens) throws IOException {
         List<Cmd> cmds = new ArrayList<>();
         if (tokens.size() == 0) {
