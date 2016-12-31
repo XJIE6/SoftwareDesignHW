@@ -1,5 +1,6 @@
 package ru.spbau.mit.kravchenkoyura;
 
+import org.junit.Assert;
 import org.junit.Test;
 import ru.spbau.mit.kravchenkoyura.cmd.Pipeline;
 
@@ -21,7 +22,7 @@ public class MainTest {
                 }
                 assertEquals('3', b);
                 if (!firstTime) {
-                    assertTrue(false);
+                    Assert.fail();
                 }
                 firstTime = false;
             }
