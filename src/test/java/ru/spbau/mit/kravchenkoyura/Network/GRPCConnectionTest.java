@@ -1,5 +1,6 @@
 package ru.spbau.mit.kravchenkoyura.Network;
 
+import org.junit.Assert;
 import org.junit.Test;
 import ru.spbau.mit.kravchenkoyura.Control.Message;
 import ru.spbau.mit.kravchenkoyura.Control.NetworkListener;
@@ -19,7 +20,8 @@ public class GRPCConnectionTest {
         grpcConnection1.start(new NetworkListener() {
             @Override
             public void onReceive(Message message) {
-                assertEquals(message, msg1);
+                assertEquals(message.getMessage(), msg1.getMessage());
+                assertEquals(message.getName(), msg1.getName());
             }
 
             @Override
@@ -29,14 +31,15 @@ public class GRPCConnectionTest {
 
             @Override
             public void onError(String error) {
-                assertTrue(false);
+                Assert.fail();
             }
         });
         Message msg2 = new Message("Yury", "Hi!");
         grpcConnection2.start(new NetworkListener() {
             @Override
             public void onReceive(Message message) {
-                assertEquals(message, msg2);
+                assertEquals(message.getMessage(), msg2.getMessage());
+                assertEquals(message.getName(), msg2.getName());
             }
 
             @Override
@@ -46,13 +49,14 @@ public class GRPCConnectionTest {
 
             @Override
             public void onError(String error) {
-                assertTrue(false);
+                Assert.fail();
             }
         });
-        grpcConnection1.wait(1234);
+        grpcConnection1.wait("1234");
         grpcConnection2.connect("localhost", "1234");
-        grpcConnection1.send(msg2);
+        Thread.sleep(1000);
         grpcConnection2.send(msg1);
+        grpcConnection1.send(msg2);
         grpcConnection1.disconnect();
     }
 }

@@ -74,7 +74,7 @@ public class GRPCConnection implements Network {
 
     @Override
     public void send(Message message) {
-        LOGGER.error("Sending.");
+        LOGGER.info("Sending.");
         streamObserver.onNext(MessengerOuterClass.Message.newBuilder().setName(message.getName()).setText(message.getMessage()).build());
     }
 

@@ -1,5 +1,6 @@
 package ru.spbau.mit.kravchenkoyura.Network;
 
+import org.junit.Assert;
 import org.junit.Test;
 import ru.spbau.mit.kravchenkoyura.Control.Message;
 import ru.spbau.mit.kravchenkoyura.Control.NetworkListener;
@@ -21,7 +22,8 @@ public class SocketConnectionTest {
         socketConnection1.start(new NetworkListener() {
             @Override
             public void onReceive(Message message) {
-                assertEquals(message, msg1);
+                assertEquals(message.getMessage(), msg1.getMessage());
+                assertEquals(message.getName(), msg1.getName());
             }
 
             @Override
@@ -31,14 +33,15 @@ public class SocketConnectionTest {
 
             @Override
             public void onError(String error) {
-                assertTrue(false);
+                Assert.fail();
             }
         });
         Message msg2 = new Message("Yury", "Hi!");
         socketConnection2.start(new NetworkListener() {
             @Override
             public void onReceive(Message message) {
-                assertEquals(message, msg2);
+                assertEquals(message.getMessage(), msg2.getMessage());
+                assertEquals(message.getName(), msg2.getName());
             }
 
             @Override
@@ -48,11 +51,11 @@ public class SocketConnectionTest {
 
             @Override
             public void onError(String error) {
-                assertTrue(false);
+                Assert.fail();
             }
         });
 
-        socketConnection1.wait(1234);
+        socketConnection1.wait("1234");
         socketConnection2.connect("localhost", "1234");
         socketConnection1.send(msg2);
         socketConnection2.send(msg1);
