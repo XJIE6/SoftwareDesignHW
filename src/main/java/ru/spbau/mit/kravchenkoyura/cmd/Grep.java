@@ -1,16 +1,34 @@
 package ru.spbau.mit.kravchenkoyura.cmd;
 
+import com.beust.jcommander.JCommander;
 import com.beust.jcommander.Parameter;
 
 import java.io.*;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 import java.util.Scanner;
 import java.util.regex.Pattern;
 
 public class Grep extends Cmd {
-    public Grep(List<String> params) {
+    private Grep(List<String> params) {
         super(params);
+    }
+
+    public static Grep create(List<String> params) {
+        List<String> args = new ArrayList<>();
+        List<String> keys = new ArrayList<>();
+        for (String arg: params) {
+            if (arg.charAt(0) == '-') {
+                keys.add(arg);
+            }
+            else {
+                args.add(arg);
+            }
+        }
+        Grep grep = new Grep(args);
+        new JCommander(grep, keys.toArray(new String[0]));
+        return grep;
     }
 
     @Parameter(names = "-i")
@@ -28,7 +46,7 @@ public class Grep extends Cmd {
             throw new IOException("Too few params for grep");
         }
         if (params.size() > 1) {
-            in = new FileInputStream(new File(params.get(0)));
+            in = new FileInputStream(new File(params.get(1)));
         }
         String regex;
         if (wholeWord) {
