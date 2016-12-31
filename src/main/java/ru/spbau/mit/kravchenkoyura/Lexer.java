@@ -8,7 +8,7 @@ public class Lexer {
     private static boolean check(Character c) {
         return c == '\'' || c == '"' || c == '$' || c == '|' || c == '=';
     }
-
+    /*метод принимает строку и возвращеет список строк, разбитых по пробелу и системным символам*/
     public static List<String> getTokens(String line) {
         List<String> tokens = new ArrayList<>();
         String[] words = line.split(" ");
@@ -34,7 +34,7 @@ public class Lexer {
         }
         return res;
     }
-
+    /*метод принимает список строк и заменяет строки вида "$", "abc" на значение abc или на "$abc", если они находятся в одинарных ковычках*/
     public static List<String> getVars(List<String> tokens, Map<String, String> env) throws IOException {
         List<String> res = new ArrayList<>();
 
@@ -42,10 +42,10 @@ public class Lexer {
         boolean varName = false;
         for (String token : tokens) {
             switch (token) {
-                case("'"):
+                case "'":
                     inQuote = !inQuote;
                     break;
-                case("$"):
+                case "$":
                     varName = true;
                     break;
                 default:

@@ -14,6 +14,9 @@ public class Pipeline extends Cmd {
 
     @Override
     public void eval(InputStream in, OutputStream out, Map<String, String> env) throws IOException {
+        if (cmd.size() == 0) {
+            return;
+        }
         InputStream currentIn = in;
         for (int i = 0; i < cmd.size() - 1; i++) {
             PipedOutputStream currentOut = new PipedOutputStream();

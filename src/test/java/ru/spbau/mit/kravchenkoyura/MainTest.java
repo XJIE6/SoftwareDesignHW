@@ -13,17 +13,17 @@ public class MainTest {
     public void testMain() throws Exception {
         String test = "echo 3";
         OutputStream out = new OutputStream() {
-            private boolean ok = false;
+            private boolean firstTime = true;
             @Override
             public void write(int b) throws IOException {
                 if (b == '\n') {
                     return;
                 }
                 assertEquals('3', b);
-                if (ok) {
+                if (!firstTime) {
                     assertTrue(false);
                 }
-                ok = true;
+                firstTime = false;
             }
         };
         new Pipeline(Parser.parseCommands(Lexer.getVars(Lexer.getTokens(test), null))).eval(null, out, null);
