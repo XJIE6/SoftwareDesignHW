@@ -10,11 +10,19 @@ import java.util.Map;
 import java.util.Scanner;
 import java.util.regex.Pattern;
 
+/**
+ * команда ищет строки, в которые входит заданный паттерн
+ */
+
 public class Grep extends Cmd {
     private Grep(List<String> params) {
         super(params);
     }
 
+    /**
+     * Предназначена для создания команды
+     * Отделяет ключи от параметров
+     */
     public static Grep create(List<String> params) {
         List<String> args = new ArrayList<>();
         List<String> keys = new ArrayList<>();
@@ -39,6 +47,11 @@ public class Grep extends Cmd {
 
     @Parameter(names = "-A")
     private Integer linesAfterMatch = 0;
+
+    /**
+     * Если параметр один, то это паттерн
+     * Если есть второй параметр, то это файл
+     */
 
     @Override
     void eval(InputStream in, OutputStream out, Map<String, String> env) throws IOException {
